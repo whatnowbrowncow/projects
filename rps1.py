@@ -1,91 +1,3 @@
-
-def play():
-	print "Hello", name
-	print "Would you like to play a game? Yes or No?"
-	answer = raw_input().lower()
-	if answer == "yes":
-		print "ok then, let's get started"
-		game_1()
-	elif answer == "no":
-		are_you_sure()
-	else:
-		print "You didn't type yes or no!"
-		play()
-		
-def are_you_sure():
-	print "Are you shure you don't wan't to play?"
-	print "Type Y to be sure and quit or type N to hear the first question again"
-	final_answer = raw_input().lower()
-	if final_answer == "y":
-		print "Goodbye then spoil sport!"
-	elif final_answer == "n":
-		play()
-
-def game_1():
-	correct = False
-	print "WELCOME %s TO THE WORLDS GREATEST GAME!!!!" % (name)
-	print "First a riddle to see if you are worthy!"
-	print "you have 3 tries"
-	print "I can go up a chimney down but not down a chimney up..........What am I?"
-	for tries in range(2):
-		worthy = raw_input().lower()
-		if worthy == "umbrella":
-			print "congratulations %s you are indeed worthy" % (name)
-			correct = True
-			game_2()
-			break
-		else:
-			print worthy, "is wrong, try again"
-	if correct == False:
-		print "Last chance!"
-		worthy = raw_input().lower()
-		if worthy == "umbrella":
-			print "congratulations %s you are indeed worthy" % (name)
-			game_2() 
-		else:
-			print "Sorry %s, you are not worthy, GAME OVER!" % (name)
-		
-def game_2():
-	print
-	print
-	print
-	print
-	print "Hello %s. Welcome to round two!" %(name)
-	print
-	print
-	print "This round is a best of 3 game of rock paper scissors!"
-	print "The rules are simple:"
-	print "- You choose Rock, Paper or Scissors"
-	print "- I will do the same"
-	print
-	print "- Rock beats Scissors"
-	print "- Scissors beats Paper"
-	print "- Paper beats Rock"
-	print
-	print "best of 3 wins"
-	print
-	print
-	print "Are you ready to play? (y/n)"
-	game_2_answer = raw_input().lower()
-	if game_2_answer == "y":
-		print "Ok lets Go!"
-		rps()
-	else:
-		print "what is it? do you need a minute to compose yourself or something?"
-		print "Ok fine"
-		print "."
-		print ".."
-		print "..."
-		print "...."
-		print "....."
-		print "......"
-		print "......."
-		print "........"
-		print "........."
-		print ".........."
-		print " Right let's get on with it!"
-		rps()
-
 def rps():
 	from random import randint
 	print "ROCK - PAPER - Scissors"
@@ -191,7 +103,6 @@ def rps():
 					return result
 				else:
 					print "we Both picked the same, it's a draw!"
-					retry()
 			result = retry()
 			print result
 		if result == 1:
@@ -202,35 +113,51 @@ def rps():
 		game = game + 1
 	print "The final score is", "me", compscore, "you", playerscore
 	if compscore > playerscore:
-		print "I have emerged victorious from this round and you %s, are out of the game"%(name)
-		print "!!!!!!!!!!!!!!!GAME OVER!!!!!!!!!!!!!!!!!"
-	else:
 		print "CONGRATULATIONS %s, You have won this round and get to progress to the final round......"%(name)
 		print "!!!!!!!!!!!!!!!!!THE DEATH MATCH!!!!!!!!!!!!!!"
 		print """
-         _,.-------.,_
-     ,;~'             '~;, 
-   ,;                     ;,
-  ;                         ;
- ,'                         ',
-,;                           ;,
-; ;      .           .      ; ;
-| ;   ______       ______   ; | 
-|  `/~"     ~" . "~     "~\'  |
-|  ~  ,-~~~^~, | ,~^~~~-,  ~  |
- |   |        }:{        |   | 
- |   l       / | \       !   |
- .~  (__,.--" .^. "--.,__)  ~. 
- |     ---;' / | \ `;---     |  
-  \__.       \/^\/       .__/  
-   V| \                 / |V  
-    | |T~\___!___!___/~T| |  
-    | |`IIII_I_I_I_IIII'| |  
-    |  \,III I I I III,/  |  
-     \   `~~~~~~~~~~'    /
-       \   .       .   /
-         \.    ^    ./   
-           ^~~~^~~~^"""
+			     .xm*f""??T?@hc.
+                          z@"` '~((!!!!!!!?*m.
+                        z$$$K   ~~(/!!!!!!!!!Mh
+                      .f` "#$k'`~~\!!!!!!!!!!!MMc
+                     :"     f*! ~:~(!!!!!!!!!!XHMk
+                     f      " %n:~(!!!!!!!!!!!HMMM.
+                    d          X~!~(!!!!!!!X!X!SMMR
+                    M :   x::  :~~!>!!!!!!MNWXMMM@R
+ n                  E ' *  ueeeeiu(!!XUWWWWWXMRHMMM>                :.
+ E%                 E  8 .$$$$$$$$K!!$$$$$$$$&M$RMM>               :"5
+z  %                3  $ 4$$$$$$$$!~!*$$$$$$$$!$MM$               :" `
+K   ":              ?> # '#$$$$$#~!!!!TR$$$$$R?@MME              z   R
+?     %.             5     ^""~~~:XW!!!!T?T!XSMMM~            :^    J
+ ".    ^s             ?.       ~~d$X$NX!!!!!!M!MM             f     :~
+  '+.    #L            *c:.    .~"?!??!!!!!XX@M@~           z"    .*
+    '+     %L           #c`"!+~~~!/!!!!!!@*TM8M           z"    .~
+      ":    '%.         'C*X  .!~!~!!!!!X!!!@RF         .#     +
+        ":    ^%.        9-MX!X!!X~H!!M!N!X$MM        .#`    +"
+          #:    "n       'L'!~M~)H!M!XX!$!XMXF      .+`   .z"
+            #:    ":      R *H$@@$H$*@$@$@$%M~     z`    +"
+              %:   `*L    'k' M!~M~X!!$!@H!tF    z"    z"
+                *:   ^*L   "k ~~~!~!!!!!M!X*   z*   .+"
+                  "s   ^*L  '%:.~~~:!!!!XH"  z#   .*"
+                    #s   ^%L  ^"#4@UU@##"  z#   .*"
+                      #s   ^%L           z#   .r"
+                        #s   ^%.       u#   .r"
+                          #i   '%.   u#   .@"
+                            #s   ^%u#   .@"
+                              #s x#   .*"
+                               x#`  .@%.
+                             x#`  .d"  "%.
+                           xf~  .r" #s   "%.
+                     u   x*`  .r"     #s   "%.  x.
+                     %Mu*`  x*"         #m.  "%zX"
+                     :R(h x*              "h..*dN.
+                   u@NM5e#>                 7?dMRMh.
+                 z$@M@$#"#"                 *""*@MM$hL
+               u@@MM8*                          "*$M@Mh.
+             z$RRM8F"                             "N8@M$bL
+            5`RM$#                                  'R88f)R
+            'h.$"                                     #$x*"""
 
-name = raw_input("what is your name?")
-play()
+
+
+rps()
